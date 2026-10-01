@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="ASL Alphabet Detector for web meetings" />
+    <title>ASL Alphabet Detector</title>
+    <!-- Google Fonts for typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Background element -->
+    <div class="animated-background"></div>
+
+    <div class="app-container">
+      <header class="glass-panel header">
+        <h1>Signify <span>Accessibility Bridge</span></h1>
+        <p>A real-time ASL-to-text translator designed for Deaf and hard-of-hearing users to provide live captions to hearing participants during online meetings.</p>
+        <div class="controls-row">
+          <div class="language-toggle">
+            <span id="label-asl" class="active">ASL</span>
+            <label class="switch">
+              <input type="checkbox" id="lang-switch">
+              <span class="slider round"></span>
+            </label>
+            <span id="label-isl">ISL</span>
+          </div>
+          
+          <button id="popout-btn" class="primary-btn" disabled>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line><path d="M13 8h4v4"></path><path d="M17 8l-5 5"></path></svg>
+            Start Captioning Overlay
+          </button>
+        </div>
+      </header>
+
+      <main class="main-content">
+        <!-- The container that will be cloned into the PiP window -->
+        <div id="pip-container" class="video-wrapper glass-panel">
+          <div class="video-container">
+            <video id="webcam" autoplay playsinline></video>
+            <canvas id="output_canvas"></canvas>
+            <!-- Loading indicator overlay -->
+            <div id="loading-overlay" class="overlay">
+              <div class="spinner"></div>
+              <p>Loading AI Model...</p>
+            </div>
+            
+            <!-- Caption area -->
+            <div id="caption-box" class="caption-glass">
+              <span id="detected-letter">Waiting for sign...</span>
+            </div>
+          </div>
+        </div>
+      </main>
+      
+      <footer class="footer">
+        <p>Uses MediaPipe Hands &bull; Runs entirely in your browser</p>
+      </footer>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
